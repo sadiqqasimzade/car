@@ -49,3 +49,8 @@
     background-color: white;
     border-left: 10px solid red;
 }
+
+.address {
+    width:20px;
+    height:40px;
+}

@@ -32,6 +32,18 @@ namespace CarBack
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+            services.Configure<IdentityOptions>(opt =>
+            {
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireUppercase = true;
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.User.RequireUniqueEmail = false;
+                opt.Lockout.MaxFailedAccessAttempts = 3;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            });
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Auth/LogIn");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

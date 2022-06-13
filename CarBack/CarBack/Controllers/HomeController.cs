@@ -22,7 +22,7 @@ namespace CarBack.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cars.Include(c=>c.Manufacturer).ToListAsync()) ;
+            return View(await _context.Cars.Include(c=>c.Manufacturer).Take(5).ToListAsync()) ;
         }
 
 

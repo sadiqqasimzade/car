@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarBack.DAL;
 using CarBack.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize]
     public class ManufacturersController : Controller
     {
         private readonly AppDbContext _context;

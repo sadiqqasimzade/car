@@ -9,10 +9,11 @@ using CarBack.DAL;
 using CarBack.Models;
 using CarBack.Utilites;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarBack.Areas.Manage.Controllers
 {
-    [Area("Manage")]
+    [Area("Manage")][Authorize]
     public class CarsController : Controller
     {
         private readonly AppDbContext _context;
@@ -24,7 +25,7 @@ namespace CarBack.Areas.Manage.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cars.Include(c => c.Manufacturer).ToListAsync());
+            return View(await _context.Cars.Include(c => c.Manufacturer).Take(5).ToListAsync());
         }
 
 
@@ -69,7 +70,8 @@ namespace CarBack.Areas.Manage.Controllers
                 await car.File.CopyToAsync(fs);
 
             car.Img = filename;
-
+            car.Name = car.Name.Trim();
+            car.Model = car.Model.Trim();
 
             _context.Cars.Add(car);
             await _context.SaveChangesAsync();
