@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.ps10{
+    padding-left: 10%;
+}
+#mainsection{
+    background-image: url("/assets/img/5379.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#section3{
+    background-image: url("/assets/img/car03.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    width: 100%;
+}
+#s1f1{
+    background-color: rgb(42, 67, 194);
+    opacity: 0.8;
+    border: 1px solid white;
+    position: relative;
+    top: 50px;
+}
+.hr{
+    width: 15%;
+    color:purple;
+}
+.hr2{
+    position: relative;
+    top: -10px;
+}
+#custombtnhoverblack:hover{
+    background-color: black;
+    color: white !important;
+}
+
+.carelement{
+    border-left: 10px solid red;
+    background-color: whitesmoke;
+
+}
+.carelement:hover{
+    background-color: white;
+    border-left: 10px solid red;
+}
